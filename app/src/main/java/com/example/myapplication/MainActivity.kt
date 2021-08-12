@@ -4,12 +4,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
@@ -22,6 +24,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var fab: FloatingActionButton
     private lateinit var recyclerView: RecyclerView
     private lateinit var swipeRefreshLayout: SwipeRefreshLayout
+    private lateinit var bottomNavView: BottomNavigationView
 
     private val fruitList = mutableListOf<Fruit>(
         Fruit("apple", R.drawable.apple),
@@ -46,6 +49,7 @@ class MainActivity : AppCompatActivity() {
         fab = findViewById(R.id.fab)
         recyclerView = findViewById(R.id.recyclerView)
         swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout)
+        bottomNavView = findViewById(R.id.bottomNavView)
 
         //设置ToolBar
         setSupportActionBar(toolBar)
@@ -90,6 +94,18 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+
+        //BottomNavigationView
+        bottomNavView.setOnNavigationItemSelectedListener {
+            "点击 ${it.title}".showToast()
+            true
+        }
+
+        bottomNavView.setOnNavigationItemReselectedListener {
+            "重复点击 ${it.title}".showToast()
+            true
+        }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
