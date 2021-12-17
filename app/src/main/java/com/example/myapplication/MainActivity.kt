@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -37,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         Fruit("orange", R.drawable.orange)
     )
 
-    private val adapter = FruitAdapter(this, fruitList)
+    private lateinit var adapter: FruitAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,6 +62,14 @@ class MainActivity : AppCompatActivity() {
         //设置DrawerLayout
         navView.setCheckedItem(R.id.navCall)
         navView.setNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.shapeableImageView -> startActivity(
+                    Intent(
+                        this,
+                        ShapeableImageViewActivity::class.java
+                    )
+                )
+            }
             drawerLayout.closeDrawers()
             true
         }
@@ -78,6 +87,7 @@ class MainActivity : AppCompatActivity() {
         repeat(3) {
             fruitList.addAll(fruitList)
         }
+        adapter = FruitAdapter(this, fruitList)
         val layoutManager = GridLayoutManager(this, 2)
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = adapter
@@ -88,7 +98,7 @@ class MainActivity : AppCompatActivity() {
             thread {
                 Thread.sleep(2000)
                 runOnUiThread {
-                    fruitList.add(0, Fruit("orange", R.drawable.orange))
+                    fruitList.add(0, Fruit("new_orange", R.drawable.orange))
                     adapter.notifyDataSetChanged()
                     swipeRefreshLayout.isRefreshing = false
                 }
@@ -96,12 +106,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         //BottomNavigationView
-        bottomNavView.setOnNavigationItemSelectedListener {
+        bottomNavView.setOnItemSelectedListener {
             "点击 ${it.title}".showToast()
             true
         }
 
-        bottomNavView.setOnNavigationItemReselectedListener {
+        bottomNavView.setOnItemReselectedListener {
             "重复点击 ${it.title}".showToast()
             true
         }

@@ -10,4 +10,44 @@
     <style name="StatusBarTheme" parent="AppTheme">
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
+
+    <!--    圆角样式-->
+    <style name="RoundedStyle">
+        <!--        角处理方式-->
+        <item name="cornerFamily">rounded</item>
+        <!--        圆角大小-->
+        <item name="cornerSize">30dp</item>
+    </style>
+
+    <!--    圆形样式-->
+    <style name="CircleStyle">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <!--    切角样式-->
+    <style name="CutStyle">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">20dp</item>
+    </style>
+
+    <!--    菱形样式-->
+    <style name="RhombusStyle">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <!--    叶子样式-->
+    <style name="LeafStyle">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">50%</item>
+        <item name="cornerSizeBottomRight">50%</item>
+    </style>
+
+    <!--    半圆样式-->
+    <style name="SemicircleStyle">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">50%</item>
+        <item name="cornerSizeTopRight">50%</item>
+    </style>
 </resources>

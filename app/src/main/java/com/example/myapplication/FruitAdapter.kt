@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class FruitAdapter(private val context: Context, private val fruitList: List<Fruit>) :
     RecyclerView.Adapter<FruitAdapter.ViewHolder>() {
-
+    private val layoutInflater: LayoutInflater = LayoutInflater.from(context)
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val fruitImage: ImageView = itemView.findViewById(R.id.fruitImage)
@@ -19,7 +19,6 @@ class FruitAdapter(private val context: Context, private val fruitList: List<Fru
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        var layoutInflater: LayoutInflater = LayoutInflater.from(context)
         val viewHolder = ViewHolder(layoutInflater.inflate(R.layout.item_fruit, parent, false))
         viewHolder.itemView.setOnClickListener {
             val fruit = fruitList[viewHolder.layoutPosition]
