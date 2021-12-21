@@ -2,11 +2,11 @@ package com.example.myapplication
 
 import android.graphics.Outline
 import android.graphics.Path
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.ViewOutlineProvider
 import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 
 class ShapeableImageViewActivity : AppCompatActivity() {
     private lateinit var imageView01: ImageView
@@ -40,22 +40,30 @@ class ShapeableImageViewActivity : AppCompatActivity() {
             clipToOutline = true
         }
 
-        //绘制矩形
+
         imageView03.apply {
             outlineProvider = object : ViewOutlineProvider() {
                 override fun getOutline(view: View, outline: Outline) {
-                    val path = Path()
                     view.elevation = 10F
-                    val gap = -30F
+                    val gap = 20F
+                    val path = Path()
                     path.moveTo(-gap, -gap)
-                    path.lineTo(-gap, view.height.toFloat() + gap)
-                    path.lineTo(view.width.toFloat() + gap, view.height.toFloat() + gap)
-                    path.lineTo(view.width.toFloat() + gap, -gap)
+                    path.lineTo(-gap, view.measuredHeight.toFloat() + gap) //左下点
+                    path.lineTo(
+                        (view.measuredWidth / 2).toFloat(),
+                        (view.measuredHeight + 50).toFloat()
+                    )
+                    path.lineTo(
+                        view.measuredWidth.toFloat() + gap,
+                        view.measuredHeight.toFloat() + gap
+                    )
+                    path.lineTo(view.measuredWidth.toFloat() + gap, -gap) //右上点
                     path.close()
                     outline.setConvexPath(path)
+                    view.scaleX = 0.5F
+                    view.scaleY = 0.5F
                 }
             }
-            clipToOutline = true
         }
     }
 }

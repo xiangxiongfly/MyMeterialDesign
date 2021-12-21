@@ -15,6 +15,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
+import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.snackbar.Snackbar
 import kotlin.concurrent.thread
 
@@ -63,12 +64,10 @@ class MainActivity : AppCompatActivity() {
         navView.setCheckedItem(R.id.navCall)
         navView.setNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.shapeableImageView -> startActivity(
-                    Intent(
-                        this,
-                        ShapeableImageViewActivity::class.java
-                    )
-                )
+                R.id.shapeableImageView ->
+                    startActivity(Intent(this, ShapeableImageViewActivity::class.java))
+                R.id.materialShapeDrawable ->
+                    startActivity(Intent(this, MaterialShapeDrawableActivity::class.java))
             }
             drawerLayout.closeDrawers()
             true
