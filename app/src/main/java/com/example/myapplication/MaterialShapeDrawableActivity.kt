@@ -146,20 +146,22 @@ class MaterialShapeDrawableActivity : BaseActivity() {
         textView07.background = backgroundDrawable
     }
 
+    /**
+     * 阴影效果
+     */
     private fun test8() {
         val shapeModel = ShapeAppearanceModel.builder()
             .setAllCorners(RoundedCornerTreatment())
             .setAllCornerSizes(dp2px(16F))
             .build()
         val backgroundDrawable = MaterialShapeDrawable(shapeModel).apply {
-            setTint(Color.GRAY)
+            setTint(Color.parseColor("#05BEBEBE"))
             paintStyle = Paint.Style.FILL
-
-            //绘制阴影
             shadowCompatibilityMode = MaterialShapeDrawable.SHADOW_COMPAT_MODE_ALWAYS
             initializeElevationOverlay(context)
+            shadowRadius = dp2px(16F).toInt()
             setShadowColor(Color.RED)
-            elevation = dp2px(10F)
+            shadowVerticalOffset = dp2px(2F).toInt()
         }
         (textView08.parent as ViewGroup).clipChildren = false
         textView08.background = backgroundDrawable
