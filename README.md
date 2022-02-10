@@ -20,6 +20,8 @@
 - SwipeRefreshLayout：下拉刷新控件
 - CollapsingToolbarLayout：折叠式标题栏，作用于Toolbar基础上的布局，不能独立存在，外层必须是CoordinatorLayout
 - NavigationView：底部切换栏控件
+- MaterialShapeDrawable：方便开发人员给控件添加样式，变换背景样式
+- ShapeableImageView：ShapeableImageView是material控件之一，继承于ImageView，作用是为了让开发者更方便的ImageView进行变形处理
 
 
 
