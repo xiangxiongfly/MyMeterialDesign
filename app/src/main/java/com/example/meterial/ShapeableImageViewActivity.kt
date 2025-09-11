@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.meterial
 
 import android.graphics.Outline
 import android.graphics.Path
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewOutlineProvider
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.myapplication.R
 
 class ShapeableImageViewActivity : AppCompatActivity() {
     private lateinit var imageView01: ImageView

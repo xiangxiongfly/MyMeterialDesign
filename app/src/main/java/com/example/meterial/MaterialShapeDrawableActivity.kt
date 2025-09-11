@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.meterial
 
 import android.graphics.Color
 import android.graphics.Paint
@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import com.example.myapplication.R
 import com.google.android.material.shape.*
 
 class MaterialShapeDrawableActivity : BaseActivity() {
